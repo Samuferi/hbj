@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bejelentéseim</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 2rem;
+    }
+    h2 { margin-bottom: 1rem; }
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+    .card h3 { margin-top: 0; color: #1e3a8a; }
+    .meta { color: #555; font-size: 0.9rem; margin-bottom: 1rem; }
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #2563eb;
+      width: 0%;
+      transition: width 0.5s;
+    }
+    .status-label {
+      font-size: 0.85rem;
+      color: #111827;
+      font-weight: bold;
+      min-width: 90px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <h2>Bejelentéseim</h2>
+  <div id="reports"></div>
+
+  <script>
+    // Mock bejelentések (backendből jön majd JSON-ban)
+    const mockReports = [
+      { id: 'PRB-1023', location: 'Épület A', date: '2025-08-20 14:30', desc: 'Lámpa nem világít a folyosón', status: 'Új' },
+      { id: 'PRB-1045', location: 'Parkoló', date: '2025-08-22 09:15', desc: 'Olajfolt a parkolóban', status: 'Folyamatban' },
+      { id: 'PRB-1050', location: 'Labor 101', date: '2025-08-25 10:00', desc: 'Számítógép nem indul', status: 'Megoldva' },
+    ];
+
+    const statusSteps = ['Új', 'Folyamatban', 'Megoldva'];
+
+    function renderReports() {
+      const container = document.getElementById('reports');
+      container.innerHTML = '';
+
+      mockReports.forEach(report => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+          <h3>${report.id} – ${report.location}</h3>
+          <div class="meta">${report.date}</div>
+          <p>${report.desc}</p>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+            <span class="status-label">${report.status}</span>
+          </div>
+        `;
+
+        // státusz alapján progress
+        const fill = card.querySelector('.progress-fill');
+        const index = statusSteps.indexOf(report.status);
+        if (index >= 0) {
+          const percent = (index+1)/statusSteps.length * 100;
+          fill.style.width = percent + '%';
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    renderReports();
+  </script>
+</body>
+</html>

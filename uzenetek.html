@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Üzenetek</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 2rem;
+    }
+    h2 { margin-bottom: 1rem; }
+    .section {
+      margin-bottom: 2rem;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    label { display: block; margin-top: .8rem; font-weight: bold; }
+    input, textarea, select {
+      width: 100%;
+      padding: .6rem;
+      margin-top: .3rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1rem;
+      background: #2563eb;
+      color: #fff;
+      padding: .6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .messages-container {
+      display: flex;
+      gap: 1rem;
+    }
+    .message-list {
+      flex: 1;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      max-height: 400px;
+    }
+    .message-item {
+      padding: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      cursor: pointer;
+    }
+    .message-item:hover { background: #f9fafb; }
+    .message-item strong { display: block; }
+    .message-detail {
+      flex: 2;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      min-height: 400px;
+    }
+    .message-detail h3 { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <h2>Üzenetek</h2>
+
+  <!-- Új üzenet küldése -->
+  <div class="section">
+    <h3>Új üzenet küldése</h3>
+    <form id="messageForm">
+      <label>Felhasználó azonosító:</label>
+      <input type="text" id="userId" value="USR-12345" readonly>
+
+      <label>Címzett azonosító:</label>
+      <input type="text" id="recipient" required>
+
+      <label>Tárgy:</label>
+      <input type="text" id="subject" required>
+
+      <label>Üzenet:</label>
+      <textarea id="body" rows="5" required></textarea>
+
+      <button type="submit">Küldés</button>
+    </form>
+    <p id="sendResult" style="color:green; font-weight:bold; display:none;">Üzenet sikeresen elküldve!</p>
+  </div>
+
+  <!-- Üzeneteim -->
+  <div class="section">
+    <h3>Üzeneteim</h3>
+    <div class="messages-container">
+      <div class="message-list" id="messageList"></div>
+      <div class="message-detail" id="messageDetail">
+        <p>Válassz egy üzenetet a listából...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mock üzenetek
+    const mockMessages = [
+      { id: 1, from: 'USR-222', subject: 'Hibajegy állapota', date: '2025-08-21', preview: 'A hibajegy feldolgozás alatt van...', body: 'Kedves felhasználó, az ön által beküldött hibajegyet feldolgoztuk és továbbítottuk a karbantartóknak.' },
+      { id: 2, from: 'USR-333', subject: 'Rendszer értesítés', date: '2025-08-22', preview: 'A rendszer karbantartás miatt...', body: 'Értesítjük, hogy 2025-08-30 napon 10:00 és 12:00 között karbantartás lesz, így a hibabejelentő rendszer átmenetileg nem lesz elérhető.' },
+      { id: 3, from: 'USR-444', subject: 'Köszönjük a bejelentést', date: '2025-08-25', preview: 'A problémát sikeresen megoldottuk...', body: 'Kedves felhasználó, az ön által jelzett probléma elhárításra került. Köszönjük a bejelentést!' },
+    ];
+
+    function renderMessageList() {
+      const list = document.getElementById('messageList');
+      list.innerHTML = '';
+
+      mockMessages.forEach(msg => {
+        const item = document.createElement('div');
+        item.className = 'message-item';
+        item.innerHTML = `
+          <strong>${msg.subject}</strong>
+          <small>${msg.date} – ${msg.from}</small>
+          <p>${msg.preview}</p>
+        `;
+        item.onclick = () => showMessageDetail(msg);
+        list.appendChild(item);
+      });
+    }
+
+    function showMessageDetail(msg) {
+      const detail = document.getElementById('messageDetail');
+      detail.innerHTML = `
+        <h3>${msg.subject}</h3>
+        <p><em>${msg.date} – ${msg.from}</em></p>
+        <p>${msg.body}</p>
+      `;
+    }
+
+    // Küldés szimuláció
+    document.getElementById('messageForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('sendResult').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('sendResult').style.display = 'none';
+        document.getElementById('messageForm').reset();
+        document.getElementById('userId').value = 'USR-12345';
+      }, 2000);
+    });
+
+    renderMessageList();
+  </script>
+</body>
+</html>

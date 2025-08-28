@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Új probléma felvétele</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 { margin-bottom: 1rem; color: #333; }
+    label { font-weight: bold; display: block; margin-top: 1rem; }
+    input, select, textarea {
+      width: 100%;
+      padding: .6rem;
+      margin-top: .3rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    input[readonly] { background: #f9fafb; }
+    button {
+      margin-top: 1.5rem;
+      padding: .8rem 1.5rem;
+      font-size: 1rem;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover { background: #1e40af; }
+    .success {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #d1fae5;
+      color: #065f46;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Új probléma felvétele</h2>
+    <form id="problemForm">
+      <!-- Bejelentő -->
+      <label for="user">Bejelentő:</label>
+      <input type="text" id="user" name="user" value="Teszt Elek (ID: 12345)" readonly>
+
+      <!-- Helyszín -->
+      <label for="location">Bejelentés helye:</label>
+      <select id="location" name="location" required>
+        <option value="">-- Válassz helyszínt --</option>
+        <option>Épület A</option>
+        <option>Épület B</option>
+        <option>Parkoló</option>
+        <option>Labor 101</option>
+      </select>
+
+      <!-- Időpont -->
+      <label for="datetime">Időpont:</label>
+      <input type="datetime-local" id="datetime" name="datetime" readonly>
+
+      <!-- Képek -->
+      <label for="images">Képek:</label>
+      <input type="file" id="images" name="images" accept="image/*" multiple>
+
+      <!-- Leírás -->
+      <label for="details">Részletes leírás:</label>
+      <textarea id="details" name="details" placeholder="Írd le részletesen a problémát..." required></textarea>
+
+      <button type="submit">Bejelentés elküldése</button>
+    </form>
+
+    <!-- Siker üzenet -->
+    <div class="success" id="successMessage">
+      ✅ A probléma sikeresen rögzítve! Azonosító: <span id="problemId"></span>
+    </div>
+  </div>
+
+  <script>
+    // Aktuális dátum és idő kitöltése
+    const now = new Date();
+    document.getElementById('datetime').value = now.toISOString().slice(0,16);
+
+    // Form kezelés
+    document.getElementById('problemForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      // Itt lehet majd fetch-el elküldeni a backendnek
+      // Példa:
+      // fetch('/api/problems', { method: 'POST', body: formData })
+
+      // Mockolt siker válasz backendtől
+      const problemId = 'PRB-' + Math.floor(Math.random()*10000);
+      document.getElementById('problemId').innerText = problemId;
+      document.getElementById('successMessage').style.display = 'block';
+      this.reset();
+      document.getElementById('datetime').value = new Date().toISOString().slice(0,16);
+      document.getElementById('user').value = "Teszt Elek (ID: 12345)";
+    });
+  </script>
+</body>
+</html>

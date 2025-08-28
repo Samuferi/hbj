@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hírek</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 2rem;
+    }
+    h2 { margin-bottom: 1rem; }
+    .news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .news-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .news-content {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-content h3 {
+      margin-top: 0;
+      margin-bottom: .5rem;
+      font-size: 1.1rem;
+      color: #1e3a8a;
+    }
+    .news-content p {
+      flex: 1;
+      font-size: .9rem;
+      color: #444;
+      margin-bottom: .8rem;
+    }
+    .news-content a {
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: bold;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hírek</h2>
+  <div class="news-container">
+    <div class="news-card">
+      <img src="https://picsum.photos/400/200?random=1" alt="Hír kép">
+      <div class="news-content">
+        <h3>Új funkció a hibabejelentő rendszerben</h3>
+        <p>Elindult az üzenetek modul, amely lehetővé teszi a felhasználóknak, hogy közvetlenül kommunikáljanak az ügyfélszolgálattal.</p>
+        <a href="#">Tovább →</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="https://picsum.photos/400/200?random=2" alt="Hír kép">
+      <div class="news-content">
+        <h3>Karbantartási értesítő</h3>
+        <p>Rendszerünk szombaton 22:00–02:00 között nem lesz elérhető a tervezett karbantartás miatt.</p>
+        <a href="#">Tovább →</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="https://picsum.photos/400/200?random=3" alt="Hír kép">
+      <div class="news-content">
+        <h3>Közösségi média megjelenés</h3>
+        <p>Kövess minket Facebookon és LinkedInen a legfrissebb hírekért és értesítőkért!</p>
+        <a href="#">Facebook oldal →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
