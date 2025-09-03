@@ -271,6 +271,9 @@ async function apiRegister(payload) {
         const res = await apiLogin({ email: email.value.trim(), password: password.value });
         showAlert('login-alert', 'Sikeres bejelentkezés! Átirányítás...', 'success');
         // TODO: token kezelése (httpOnly cookie ajánlott), redirect a dashboardra
+        localStorage.setItem('token', res.token);  // token mentése
+        localStorage.setItem('user', JSON.stringify(res.user)); // opcionális user adatok
+        window.location.href = '/index';       // átirányítás az index.html-re
       }catch(err){
         if(err.field === 'email') setFieldError('login-email-error', err.message);
         else if(err.field === 'password') setFieldError('login-password-error', err.message);
