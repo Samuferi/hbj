@@ -88,4 +88,4 @@ app.post('/api/login', async (req, res) => {
 });
 
 // 🔹 Szerver indítása
-app.listen(3000, () => console.log('Server fut: http://localhost:3000/login'));
+export default app;
