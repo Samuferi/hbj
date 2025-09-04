@@ -26,11 +26,11 @@ const JWT_SECRET = 'nagyonTitkosKulcs';
 
 // 🔹 LOGIN/REGISTER oldal kiszolgálása
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/login_test.html'));
+  res.sendFile(path.join(__dirname, '../front/login_test.html'));
 });
 
 app.get('/index', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+  res.sendFile(path.join(__dirname, '../front/index.html'));
 });
 
 // 🔹 REGISZTRÁCIÓ

@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import { fileURLToPath } from "url";
-import loginRoutes from "./backend/login_t.js";  // ide húzzuk be a login route-okat
+import loginRoutes from "../back/login_t.js";  // ide húzzuk be a login route-okat
 
 const app = express();
 app.use(bodyParser.json());
