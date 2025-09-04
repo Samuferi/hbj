@@ -1,0 +1,33 @@
+:root{
+    --bg: #0b1020; --card: #0f1724; --muted: #9aa3bf; --text: #eaf0ff; --accent: #9b36de;
+    --radius: 12px; --shadow: 0 10px 30px rgba(2,6,23,.6);
+}
+*{box-sizing:border-box}
+body{margin:0; min-height:100vh; font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto; color:var(--text); background:linear-gradient(180deg,#081126 0%, #071028 100%); padding:28px}
+.app{max-width:1100px; margin:0 auto; display:grid; grid-template-columns:260px 1fr; gap:22px; align-items:start}
+
+/* Sidebar */
+.sidebar{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.04)}
+.brand{font-weight:700; font-size:16px; margin-bottom:10px}
+.welcome-small{font-size:13px; color:var(--muted); margin-bottom:12px}
+.nav{display:flex; flex-direction:column; gap:8px}
+.nav button{background:transparent; border:1px solid transparent; color:var(--text); padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer; display:flex; align-items:center; gap:10px}
+.nav button:hover{background:rgba(91,140,255,.06)}
+.nav button.active{background:var(--accent); color:white; box-shadow:0 8px 20px rgba(170, 15, 152, 0.35);}
+
+/* Main */
+.main{background: linear-gradient(180deg, rgba(255,255,255,.01), transparent); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.03)}
+.hero{display:flex; justify-content:space-between; align-items:center; gap:16px}
+.greet{font-size:30px; font-weight:600; line-height:2.0; margin:0}
+.greet-sub{color:var(--muted); font-size:13px}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px}
+.card{background:rgba(255,255,255,.02); border-radius:12px; padding:14px; min-height:92px; border:1px solid rgba(255,255,255,.03)}
+.card h3{margin:0 0 6px; font-size:15px}
+.card p{margin:0; font-size:13px; color:var(--muted)}
+
+/* utility */
+.right{margin-left:auto}
+.small{font-size:13px}
+
+@media (max-width:900px){ .app{grid-template-columns:1fr; padding:12px} .sidebar{order:2} }

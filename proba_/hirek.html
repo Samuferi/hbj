@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hibabejelentő – Kezdőlap</title>
+        <link rel="icon" href="balintka.jpg" />
+        <link rel="stylesheet" href="index/index.css" />
+        <script src="index/index.js" defer></script>
+    </head>
+    <body>
+        <div class="app" role="application">
+            <aside class="sidebar" aria-label="Oldal navigáció">
+            <div class="brand">Hibabejelentő</div>
+            <div class="welcome-small">Üdvözöl a csapat hibakezelő rendszere</div>
+            <nav class="nav" role="navigation" aria-label="Főmenü">
+                <button data-view="contact" onclick="location.href='index.html'">☎️ Kapcsolat</button>
+                <button data-view="new" onclick="location.href='ujprob.html'">➕ Új probléma felvétele</button>
+                <button data-view="mine" onclick="location.href='bejelenteseim.html'">📋 Bejelentéseim</button>
+                <!--<button data-view="messages">✉️ Üzenetek</button>-->
+                <button data-view="news" class="active">📰 Hírek</button>
+            </nav>
+            </aside>
+
+            <main class="main" id="main" tabindex="0">
+                <h2>Hírek</h2>
+                <div class="news-container">
+                    <div class="news-card">
+                    <img src="https://picsum.photos/400/200?random=1" alt="Hír kép">
+                    <div class="news-content">
+                        <h3>Új funkció a hibabejelentő rendszerben</h3>
+                        <p>Elindult az üzenetek modul, amely lehetővé teszi a felhasználóknak, hogy közvetlenül kommunikáljanak az ügyfélszolgálattal.</p>
+                        <a href="#">Tovább →</a>
+                    </div>
+                    </div>
+
+                    <div class="news-card">
+                    <img src="https://picsum.photos/400/200?random=2" alt="Hír kép">
+                    <div class="news-content">
+                        <h3>Karbantartási értesítő</h3>
+                        <p>Rendszerünk szombaton 22:00–02:00 között nem lesz elérhető a tervezett karbantartás miatt.</p>
+                        <a href="#">Tovább →</a>
+                    </div>
+                    </div>
+
+                    <div class="news-card">
+                    <img src="https://picsum.photos/400/200?random=3" alt="Hír kép">
+                    <div class="news-content">
+                        <h3>Közösségi média megjelenés</h3>
+                        <p>Kövess minket Facebookon és LinkedInen a legfrissebb hírekért és értesítőkért!</p>
+                        <a href="#">Facebook oldal →</a>
+                    </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </body>
+</html>
