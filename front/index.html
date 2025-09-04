@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hibabejelentő – Kezdőlap</title>
+  <style>
+    :root{
+      --bg: #0b1020; --card: #0f1724; --muted: #9aa3bf; --text: #eaf0ff; --accent: #5b8cff;
+      --radius: 12px; --shadow: 0 10px 30px rgba(2,6,23,.6);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; min-height:100vh; font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto; color:var(--text); background:linear-gradient(180deg,#081126 0%, #071028 100%); padding:28px}
+    .app{max-width:1100px; margin:0 auto; display:grid; grid-template-columns:260px 1fr; gap:22px; align-items:start}
+
+    /* Sidebar */
+    .sidebar{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.04)}
+    .brand{font-weight:700; font-size:16px; margin-bottom:10px}
+    .welcome-small{font-size:13px; color:var(--muted); margin-bottom:12px}
+    .nav{display:flex; flex-direction:column; gap:8px}
+    .nav button{background:transparent; border:1px solid transparent; color:var(--text); padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer; display:flex; align-items:center; gap:10px}
+    .nav button:hover{background:rgba(91,140,255,.06)}
+    .nav button.active{background:var(--accent); color:white; box-shadow:0 8px 20px rgba(91,140,255,.18)}
+
+    /* Main */
+    .main{background: linear-gradient(180deg, rgba(255,255,255,.01), transparent); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.03)}
+    .hero{display:flex; justify-content:space-between; align-items:center; gap:16px}
+    .greet{font-size:20px; font-weight:600}
+    .greet-sub{color:var(--muted); font-size:13px}
+
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px}
+    .card{background:rgba(255,255,255,.02); border-radius:12px; padding:14px; min-height:92px; border:1px solid rgba(255,255,255,.03)}
+    .card h3{margin:0 0 6px; font-size:15px}
+    .card p{margin:0; font-size:13px; color:var(--muted)}
+
+    /* utility */
+    .right{margin-left:auto}
+    .small{font-size:13px}
+
+    @media (max-width:900px){ .app{grid-template-columns:1fr; padding:12px} .sidebar{order:2} }
+  </style>
+</head>
+<body>
+  <div class="app" role="application">
+    <aside class="sidebar" aria-label="Oldal navigáció">
+      <div class="brand">Hibabejelentő</div>
+      <div class="welcome-small">Üdvözöl a csapat hibakezelő rendszere</div>
+      <nav class="nav" role="navigation" aria-label="Főmenü">
+        <button data-view="new" class="active">➕ Új probléma felvétele</button>
+        <button data-view="mine">📋 Bejelentéseim</button>
+        <button data-view="messages">✉️ Üzenetek</button>
+        <button data-view="contact">☎️ Kapcsolat</button>
+        <button data-view="news">📰 Hírek</button>
+      </nav>
+    </aside>
+
+    <main class="main" id="main" tabindex="0">
+      <section id="view-welcome">
+        <div class="hero">
+          <div>
+            <div class="greet">Szia! Üdv a Hibabejelentőben 👋</div>
+            <div class="greet-sub">Lépj be a bal oldali menüből, vagy kezdj egy új hibajegy létrehozásával.</div>
+          </div>
+          <div class="right small">Megjelenés: <strong>felhasználói kezdőlap</strong></div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Gyors tennivalók</h3>
+            <p>Új hiba felvétele, meglévők megtekintése, üzenetek követése.</p>
+          </div>
+          <div class="card">
+            <h3>Statisztika</h3>
+            <p>Nyitott: <strong>3</strong> • Megoldott: <strong>12</strong></p>
+          </div>
+          <div class="card">
+            <h3>Legutóbbi bejegyzés</h3>
+            <p>Mobil nézetben szétcsúszó fejléc — 2025-08-10</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-new" class="hidden">
+        <h2>Új probléma felvétele</h2>
+        <p class="small">Készíts gyors hibajegyet: add meg a címet, leírást, prioritást és címszó tag-eket.</p>
+        <div style="margin-top:12px">
+          <button id="open-new" class="btn" style="background:var(--accent); padding:10px 12px; border-radius:10px; border:0; color:white; font-weight:600">➕ Új hibajegy</button>
+        </div>
+      </section>
+
+      <section id="view-mine" class="hidden">
+        <h2>Bejelentéseim</h2>
+        <p class="small">Itt látod a saját hibajegyeidet — szűrhetsz státusz és prioritás szerint.</p>
+        <div style="margin-top:12px">
+          <div class="card"><h3>BUG-1025</h3><p>Értesítések duplikálódnak — Folyamatban</p></div>
+          <div class="card"><h3>BUG-1024</h3><p>Login után fehér képernyő — Nyitott</p></div>
+        </div>
+      </section>
+
+      <section id="view-messages" class="hidden">
+        <h2>Üzenetek</h2>
+        <p class="small">Csapat üzenetek és rendszerüzenetek listája.</p>
+        <div style="margin-top:12px">
+          <div class="card"><h3>Rendszerüzenet</h3><p>Fenntartás várható: 2025-09-01</p></div>
+        </div>
+      </section>
+
+      <section id="view-contact" class="hidden">
+        <h2>Kapcsolat</h2>
+        <p class="small">Fejlesztői csapat: devteam@pelda.hu</p>
+        <div style="margin-top:12px">
+          <div class="card"><h3>Támogatás</h3><p>Általános kérdések: support@pelda.hu</p></div>
+        </div>
+      </section>
+
+      <section id="view-news" class="hidden">
+        <h2>Hírek</h2>
+        <p class="small">Frissítések, kiadások és értesítések.</p>
+        <div style="margin-top:12px">
+          <div class="card"><h3>V1.2 kiadás</h3><p>Javítottuk az értesítési logikát — 2025-08-21</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // egyszerű nézet váltó
+    const buttons = document.querySelectorAll('.nav button');
+    const views = {
+      'new': document.getElementById('view-new'),
+      'mine': document.getElementById('view-mine'),
+      'messages': document.getElementById('view-messages'),
+      'contact': document.getElementById('view-contact'),
+      'news': document.getElementById('view-news')
+    };
+    const welcome = document.getElementById('view-welcome');
+
+    function setActive(key){
+      buttons.forEach(b=> b.classList.toggle('active', b.getAttribute('data-view')===key));
+      // hide all
+      Object.values(views).forEach(v=> v.classList.add('hidden'));
+      welcome.classList.toggle('hidden', true);
+
+      // show selected
+      if(key && views[key]){
+        views[key].classList.remove('hidden');
+      } else {
+        welcome.classList.remove('hidden');
+      }
+      // shift main focus for A11y
+      document.getElementById('main').focus();
+    }
+
+    buttons.forEach(btn=> btn.addEventListener('click', ()=>{
+      const key = btn.getAttribute('data-view');
+      setActive(key);
+    }));
+
+    // default: show welcome
+    setActive();
+
+    // példa: "Új hibajegy" gomb összekapcsolása (ha integrálod a formot)
+    document.getElementById('open-new').addEventListener('click', ()=>{
+      // ha van külön modal / form: nyisd meg. Most csak átirányít a nézetre és fókuszál.
+      setActive('new');
+      const btn = document.querySelector('.nav button[data-view="new"]'); if(btn) btn.classList.add('active');
+    });
+  </script>
+</body>
+</html>
+
