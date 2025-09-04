@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hibabejelentő – Kezdőlap</title>
+        <link rel="icon" href="balintka.jpg" />
+        <link rel="stylesheet" href="index/index.css" />
+        <script src="index/index.js" defer></script>
+    </head>
+    <body>
+        <div class="app" role="application">
+            <aside class="sidebar" aria-label="Oldal navigáció">
+            <div class="brand">Hibabejelentő</div>
+            <div class="welcome-small">Üdvözöl a csapat hibakezelő rendszere</div>
+            <nav class="nav" role="navigation" aria-label="Főmenü">
+                <button data-view="contact" class="active">☎️ Kapcsolat</button>
+                <button data-view="new" onclick="location.href='ujprob.html'">➕ Új probléma felvétele</button>
+                <button data-view="mine" onclick="location.href='bejelenteseim.html'">📋 Bejelentéseim</button>
+                <!--<button data-view="messages">✉️ Üzenetek</button>-->
+                <button data-view="news" onclick="location.href='hirek.html'">📰 Hírek</button>
+            </nav>
+            </aside>
+
+            <main class="main" id="main" tabindex="0">
+                <section id="view-welcome">
+                    <div class="hero">
+                        <div>
+                            <div class="greet">Szia! Üdv a Hibabejelentőben 👋</div>
+                            <div class="greet-sub">Tekintsd meg korábbi bejelentéseid státuszát vagy jelents be egy új hibát a bal oldali navigációs mező használatával.</div>
+                        </div>
+                        <div class="right small">Megjelenés: <strong>felhasználói kezdőlap</strong></div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="card">
+                            <h3>Elérhetőségeink</h3>
+                            <p>Székhely: <br> <strong>Tekenye, Bugyberek utca 3. 6969</strong></p>
+                            <p>Tel. szám: <br> <strong>06 30... a többiért harcoljatok</strong></p>
+                            <p>email-cím: <br> <strong>xy123@gmail.com</strong></p>
+                        </div>
+                        <div class="card">
+                            <h3>Statisztika</h3>
+                            <p>Nyitott: <strong>3</strong> • Megoldott: <strong>12</strong></p>
+                        </div>
+                        <div class="card">
+                            <h3>Legutóbbi bejegyzés</h3>
+                            <p>Mobil nézetben szétcsúszó fejléc — 2025-08-10</p>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </body>
+</html>

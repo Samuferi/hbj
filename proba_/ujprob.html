@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hibabejelentő – Kapcsolatok</title>
+        <link rel="icon" href="balintka.jpg" />
+        <link rel="stylesheet" href="index/index.css" />
+        <script src="index/index.js" defer></script>
+    </head>
+    <body>
+        <div class="app" role="application">
+            <aside class="sidebar" aria-label="Oldal navigáció">
+            <div class="brand">Hibabejelentő</div>
+            <div class="welcome-small">Üdvözöl a csapat hibakezelő rendszere</div>
+            <nav class="nav" role="navigation" aria-label="Főmenü">
+                <button data-view="contact" onclick="location.href='index.html'">☎️ Kapcsolat</button>
+                <button data-view="new" class="active" >➕ Új probléma felvétele</button>
+                <button data-view="mine" onclick="location.href='bejelenteseim.html'">📋 Bejelentéseim</button>
+                <!--<button data-view="messages">✉️ Üzenetek</button>-->
+                <button data-view="news" onclick="location.href='hirek.html'">📰 Hírek</button>
+            </nav>
+            </aside>
+
+            <main class="main" id="main" tabindex="0">
+                <div class="container">
+                    <h2>Új probléma felvétele</h2>
+                    <form id="problemForm">
+                    <!-- Bejelentő -->
+                    <label for="user">Bejelentő:</label>
+                    <input type="text" id="user" name="user" value="Teszt Elek (ID: 12345)" readonly>
+
+                    <!-- Helyszín -->
+                    <label for="location">Bejelentés helye:</label>
+                    <select id="location" name="location" required>
+                        <option value="">-- Válassz helyszínt --</option>
+                        <option>Épület A</option>
+                        <option>Épület B</option>
+                        <option>Parkoló</option>
+                        <option>Labor 101</option>
+                    </select>
+
+                    <!-- Időpont -->
+                    <label for="datetime">Időpont:</label>
+                    <input type="datetime-local" id="datetime" name="datetime" readonly>
+
+                    <!-- Képek -->
+                    <label for="images">Képek:</label>
+                    <input type="file" id="images" name="images" accept="image/*" multiple>
+
+                    <!-- Leírás -->
+                    <label for="details">Részletes leírás:</label>
+                    <textarea id="details" name="details" placeholder="Írd le részletesen a problémát..." required></textarea>
+
+                    <button type="submit">Bejelentés elküldése</button>
+                    </form>
+
+                    <!-- Siker üzenet -->
+                    <div class="success" id="successMessage">
+                    ✅ A probléma sikeresen rögzítve! Azonosító: <span id="problemId"></span>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+        
+
+    </body>
+</html>

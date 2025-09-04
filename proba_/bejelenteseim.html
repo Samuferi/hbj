@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hibabejelentő – Kezdőlap</title>
+        <link rel="icon" href="balintka.jpg" />
+        <link rel="stylesheet" href="index/index.css" />
+        <script src="index/index.js" defer></script>
+    </head>
+    <body>
+        <div class="app" role="application">
+            <aside class="sidebar" aria-label="Oldal navigáció">
+            <div class="brand">Hibabejelentő</div>
+            <div class="welcome-small">Üdvözöl a csapat hibakezelő rendszere</div>
+            <nav class="nav" role="navigation" aria-label="Főmenü">
+                <button data-view="contact" onclick="location.href='index.html'">☎️ Kapcsolat</button>
+                <button data-view="new" onclick="location.href='ujprob.html'">➕ Új probléma felvétele</button>
+                <button data-view="mine" class="active">📋 Bejelentéseim</button>
+                <!--<button data-view="messages">✉️ Üzenetek</button>-->
+                <button data-view="news" onclick="location.href='hirek.html'">📰 Hírek</button>
+            </nav>
+            </aside>
+
+            <main class="main" id="main" tabindex="0">
+                <h2>Bejelentéseim</h2>
+                <div id="reports"></div>
+
+                <script>
+                    // Mock bejelentések (backendből jön majd JSON-ban)
+                    const mockReports = [
+                    { id: 'PRB-1023', location: 'Épület A', date: '2025-08-20 14:30', desc: 'Lámpa nem világít a folyosón', status: 'Új' },
+                    { id: 'PRB-1045', location: 'Parkoló', date: '2025-08-22 09:15', desc: 'Olajfolt a parkolóban', status: 'Folyamatban' },
+                    { id: 'PRB-1050', location: 'Labor 101', date: '2025-08-25 10:00', desc: 'Számítógép nem indul', status: 'Megoldva' },
+                    ];
+
+                    const statusSteps = ['Új', 'Folyamatban', 'Megoldva'];
+
+                    function renderReports() {
+                    const container = document.getElementById('reports');
+                    container.innerHTML = '';
+
+                    mockReports.forEach(report => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+
+                        card.innerHTML = `
+                        <h3>${report.id} – ${report.location}</h3>
+                        <div class="meta">${report.date}</div>
+                        <p>${report.desc}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                            </div>
+                            <span class="status-label">${report.status}</span>
+                        </div>
+                        `;
+
+                        // státusz alapján progress
+                        const fill = card.querySelector('.progress-fill');
+                        const index = statusSteps.indexOf(report.status);
+                        if (index >= 0) {
+                        const percent = (index+1)/statusSteps.length * 100;
+                        fill.style.width = percent + '%';
+                        }
+
+                        container.appendChild(card);
+                    });
+                    }
+
+                    renderReports();
+                </script>
+
+            </main>
+        </div>
+    </body>
+</html>
