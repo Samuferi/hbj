@@ -1,5 +1,5 @@
 :root{
-    --accent-color: #8672FF;
+    --accent-color: #02620d;
     --base-color: white;
     --text-color: #2E2b41;
     --input-color: #f3f0ff;
@@ -17,7 +17,7 @@ html{
 }
 body{
     min-height: 100vh;
-    background-image: url(bg.jpg);
+    background-image: url(balintka.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
@@ -107,6 +107,7 @@ form button{
     text-transform: uppercase;
     cursor:pointer;
     transition: 150ms ease;
+    color: var(--base-color);
 }
 form button:hover{
     background-color: var(--text-color);
