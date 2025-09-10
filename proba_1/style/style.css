@@ -1,10 +1,10 @@
 :root{
-    --base-clr: #0b1020;
+    --base-clr: #ffffff;
     --line-clr: #42434a;
-    --hover-clr: #222533;
-    --text-clr: #eaf0ff;
-    --accent-clr: #9b36de;
-    --secondary-text-clr: #6c6d75;
+    --hover-clr: #558179;
+    --text-clr: #000000;
+    --accent-clr: #16c987;
+    --secondary-text-clr: #181926;
 }
 *{
     margin: 0;
@@ -17,7 +17,7 @@ html{
 body{
     min-height: 100vh;
     min-height: 100dvh;
-    background:linear-gradient(180deg,#081126 0%, #071028 100%);
+    background:linear-gradient(180deg,#19da93 0%, #ffffff 100%);
     color: var(--text-clr);
     display:grid;
     grid-template-columns: auto 1fr;
@@ -55,7 +55,7 @@ body{
 #sidebar ul li.active a {
     color: white;
     background:var(--accent-clr); 
-    box-shadow:0 8px 20px #aa0f9859;
+    box-shadow:0 8px 20px #1fadd459;
     svg{
         fill: white;
     }
@@ -143,7 +143,7 @@ main p{
     margin-bottom: 20px;
     padding: min(3em, 15%);
     background:rgba(255,255,255,.02);
-    box-shadow: 0 8px 32px 0 var(--base-clr);
+    box-shadow: 0 8px 32px 0 var(--secondary-text-clr);
 
     h2, p {
         margin-top: 1em;
