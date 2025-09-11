@@ -5,12 +5,15 @@ import { fileURLToPath } from "url";
 import loginRoutes from "./login_t.js";  // ide húzzuk be a login route-okat
 import problemRoutes from "./ujprob_b.js";
 
-const app = express();
-app.use(bodyParser.json());
+
 
 // __dirname beállítása
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // statikus frontend kiszolgálás
 app.use(express.static(path.join(__dirname, "front")));
@@ -19,10 +22,10 @@ app.use(express.static(path.join(__dirname, "front")));
 app.use("/uploads", express.static("uploads"));
 
 // login route-ok
-app.use("/api/login", loginRoutes);
+app.use("/", loginRoutes);
 
 // probléma bejelentő route-ok
-app.use("/api/problem", problemRoutes);
+app.use("/", problemRoutes);
 
 // szerver indítása
 app.listen(3000, () => {
