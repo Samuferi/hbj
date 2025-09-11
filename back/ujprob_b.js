@@ -5,10 +5,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 // ESM miatt __dirname pótlás
+const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const router = express.Router();
+
 
 // ---- MySQL pool (ehhez a DB-hez csatlakozunk) ----
 const db = await mysql.createPool({
@@ -18,8 +19,9 @@ const db = await mysql.createPool({
   password: 'Ocsi_2018',
   database: 'hibabejelento'
 });
-app.get('/problem', (req, res) => {
-  res.sendFile(path.join(__dirname, '../front/ujprob.html'));
+
+router.get("/problem", (req, res) => {
+  res.sendFile(path.join(__dirname, "../front/ujprob.html"));
 });
 
 // ---- Multer fájl feltöltés beállítás ----
@@ -65,4 +67,4 @@ router.post("/", upload.single("images"), async (req, res) => {
   }
 });
 
-export default app;
+export default router;

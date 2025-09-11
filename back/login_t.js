@@ -6,8 +6,8 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const app = express();
-app.use(bodyParser.json());
+const router = express.Router();
+
 
 // __dirname beállítása (mivel ES modul van)
 const __filename = fileURLToPath(import.meta.url);
@@ -25,16 +25,16 @@ const db = await mysql.createPool({
 const JWT_SECRET = 'nagyonTitkosKulcs';
 
 // 🔹 LOGIN/REGISTER oldal kiszolgálása
-app.get('/login', (req, res) => {
+router.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, '../front/login_test.html'));
 });
 
-app.get('/index', (req, res) => {
+router.get('/index', (req, res) => {
   res.sendFile(path.join(__dirname, '../front/index.html'));
 });
 
 // 🔹 REGISZTRÁCIÓ
-app.post('/api/register', async (req, res) => {
+router.post('/api/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -59,7 +59,7 @@ app.post('/api/register', async (req, res) => {
 });
 
 // 🔹 BEJELENTKEZÉS
-app.post('/api/login', async (req, res) => {
+router.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -88,4 +88,4 @@ app.post('/api/login', async (req, res) => {
 });
 
 // 🔹 Szerver indítása
-export default app;
+export default router;

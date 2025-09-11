@@ -22,7 +22,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/", loginRoutes);
 
 // probléma bejelentő route-ok
-app.use("/api/problems", problemRoutes);
+app.use("/", problemRoutes);
 
 // szerver indítása
 app.listen(3000, () => {
