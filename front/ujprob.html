@@ -92,27 +92,44 @@
   </div>
 
   <script>
-    // Aktuális dátum és idő kitöltése
+    // aktuális dátum (szerkeszthető legyen? akkor vedd ki a readonly-t a HTML-ből)
     const now = new Date();
     document.getElementById('datetime').value = now.toISOString().slice(0,16);
 
-    // Form kezelés
-    document.getElementById('problemForm').addEventListener('submit', function(e){
-      e.preventDefault();
+  document.getElementById('problemForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const formData = new FormData(this);
 
-      const formData = new FormData(this);
-      // Itt lehet majd fetch-el elküldeni a backendnek
-      // Példa:
-      // fetch('/api/problems', { method: 'POST', body: formData })
+    // A 'user' mezőt a backend figyelmen kívül hagyja – a user_id a tokenből jön.
+    // A helyszín legördülőben állítsd az engedélyezett értékeket:
+    // Közterület, Park, Sportcentrum, Sétálóutca
 
-      // Mockolt siker válasz backendtől
-      const problemId = 'PRB-' + Math.floor(Math.random()*10000);
-      document.getElementById('problemId').innerText = problemId;
+    try {
+      const token = localStorage.getItem('token'); // login után elmentve
+      const resp = await fetch('/api/problems', {
+        method: 'POST',
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+        body: formData
+      });
+
+      const data = await resp.json();
+      if(!resp.ok){
+        alert(data.error || 'Hiba történt');
+        return;
+      }
+
+      document.getElementById('problemId').innerText = data.problemId;
       document.getElementById('successMessage').style.display = 'block';
+
+      // ürítés + új dátum
       this.reset();
       document.getElementById('datetime').value = new Date().toISOString().slice(0,16);
-      document.getElementById('user').value = "Teszt Elek (ID: 12345)";
-    });
-  </script>
+    } catch (err) {
+      console.error(err);
+      alert('Hálózati vagy szerver hiba');
+    }
+  });
+</script>
+
 </body>
 </html>
