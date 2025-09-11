@@ -18,6 +18,9 @@ const db = await mysql.createPool({
   password: 'Ocsi_2018',
   database: 'hibabejelento'
 });
+app.get('/problem', (req, res) => {
+  res.sendFile(path.join(__dirname, '../front/ujprob.html'));
+});
 
 // ---- Multer fájl feltöltés beállítás ----
 const storage = multer.diskStorage({
