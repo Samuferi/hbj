@@ -4,14 +4,14 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const data = {
-    lastname: document.getElementById("lastname-input").value,
-    firstname: document.getElementById("firstname-input").value,
-    "post-number": document.getElementById("post-number-input").value,
-    town: document.getElementById("town-input").value,
-    address: document.getElementById("address-input").value,
-    "phone-number": document.getElementById("phone-number-input").value,
-    email: document.getElementById("email-input").value,
-    password: document.getElementById("password-input").value
+    lastname: document.getElementById("lastname").value,
+    firstname: document.getElementById("firstname").value,
+    "post-number": document.getElementById("post-number").value,
+    town: document.getElementById("town").value,
+    address: document.getElementById("address").value,
+    "phone-number": document.getElementById("phone-number").value,
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value
   };
 
   try {
