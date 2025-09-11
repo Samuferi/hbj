@@ -25,7 +25,7 @@ form.addEventListener("submit", async (e) => {
     alert(result.message);
 
     if (res.ok) {
-      window.location.href = "login.html";
+      window.location.href = "/login";
     }
   } catch (err) {
     console.error(err);
