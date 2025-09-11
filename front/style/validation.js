@@ -1,8 +1,8 @@
-const form = document.getElementById("form");
-const firstname_input = document.getElementById("firstname-input");
-const email_input = document.getElementById("email-input");
-const password_input = document.getElementById("password-input");
-const repeat_password_input = document.getElementById("repeat-password-input");
+const form = document.getElementById("signupForm");
+const firstname_input = document.getElementById("firstname");
+const email_input = document.getElementById("email");
+const password_input = document.getElementById("password");
+const repeat_password_input = document.getElementById("repeat-password");
 const error_message = document.getElementById("error-message");
 
 form.addEventListener('submit', e => {
