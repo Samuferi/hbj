@@ -19,10 +19,10 @@ app.use(express.static(path.join(__dirname, "front")));
 app.use("/uploads", express.static("uploads"));
 
 // login route-ok
-app.use("/", loginRoutes);
+app.use("/api/login", loginRoutes);
 
 // probléma bejelentő route-ok
-app.use("/", problemRoutes);
+app.use("/api/problem", problemRoutes);
 
 // szerver indítása
 app.listen(3000, () => {
