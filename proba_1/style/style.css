@@ -137,18 +137,31 @@ main p{
     margin-top: 5px;
     margin-bottom: 15px;
 }
-.container{
-    border: 1px solid var(--line-clr);
-    border-radius: 1em;
-    margin-bottom: 20px;
-    padding: min(3em, 15%);
-    background:rgba(255,255,255,.02);
-    box-shadow: 0 8px 32px 0 var(--secondary-text-clr);
-
-    h2, p {
-        margin-top: 1em;
-    }
+.card{
+    background:rgba(255,255,255,.02); 
+    border-radius:12px; 
+    padding:14px; 
+    min-height:92px; 
+    border:1px solid rgba(255,255,255,.03)
 }
+.grid{
+    display:grid; 
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); 
+    gap:14px; 
+    margin-top:18px
+}
+.greet{font-size:30px; font-weight:600; line-height:2.0; margin:0}
+.greet-sub{color:var(--muted); font-size:13px}
+.card h3{margin:0 0 6px; font-size:15px}
+.card p{margin:0; font-size:13px; color:var(--muted)}
+.hero{
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    gap:16px
+}
+
+
 
 @media (max-width: 800px){
     body{
