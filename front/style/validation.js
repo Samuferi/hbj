@@ -6,11 +6,15 @@ const repeat_password_input = document.getElementById("repeat-password");
 const error_message = document.getElementById("error-message");
 
 form.addEventListener('submit', e => {
-    //e.preventDefault();
     let errors = [];
 
     if(firstname_input){
-        errors = getSignupFormErrors(firstname_input.value, email_input.value, password_input.value, repeat_password_input.value);
+        errors = getSignupFormErrors(
+            firstname_input.value,
+            email_input.value,
+            password_input.value,
+            repeat_password_input.value
+        );
     }
     else{
         errors = getLoginFormErrors(email_input.value, password_input.value);
@@ -20,35 +24,7 @@ form.addEventListener('submit', e => {
         e.preventDefault();
         error_message.innerText = errors.join(" ");
     }
-})
-
-function getSignupFormErrors(firstname, email, password, repeat_password){
-    let errors = [];
-
-    if(firstname === '' || firstname == null){
-        errors.push("Szükséges a név megadása!");
-        firstname_input.parentElement.classList.add("incorrect");
-    }
-    if(email === '' || email == null){
-        errors.push("Szükséges az email-cím megadása!");
-        email_input.parentElement.classList.add("incorrect");
-    }
-    if(password === '' || password == null){
-        errors.push("Szükséges a jelszó megadása!");
-        password_input.parentElement.classList.add("incorrect");
-    }
-    if(password.length < 8){
-        errors.push("A jelszónak legalább 8 karakter hosszúnak kell lennie!");
-        password_input.parentElement.classList.add("incorrect");
-    }
-    if(password !== repeat_password){
-        errors.push("A jelszavak nem egyeznek!");
-        password_input.parentElement.classList.add("incorrect");
-        repeat_password_input.parentElement.classList.add("incorrect");
-    }
-
-    return errors;
-}
+});
 
 const allInputs = [firstname_input, email_input, password_input, repeat_password_input].filter(input => input != null);
 
@@ -59,24 +35,4 @@ allInputs.forEach(input => {
             error_message.innerText = "";
         }
     })
-})
-
-function getLoginFormErrors(email, password){
-    let errors = [];
-
-    if(email === '' || email == null){
-        errors.push("Szükséges az email-cím megadása!");
-        email_input.parentElement.classList.add("incorrect");
-    }
-    if(password === '' || password == null){
-        errors.push("Szükséges a jelszó megadása!");
-        password_input.parentElement.classList.add("incorrect");
-    }
-    if(password.length < 8){
-        errors.push("A jelszónak legalább 8 karakter hosszúnak kell lennie!");
-        password_input.parentElement.classList.add("incorrect");
-    }
-
-
-    return errors;
-}
+});
