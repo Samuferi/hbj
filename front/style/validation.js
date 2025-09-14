@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded", () => {
 // 🔹 Változók a form elemeihez
 const form = document.getElementById("signupForm") || document.getElementById("form"); // signup vagy login form
 const firstname = document.getElementById("firstname");         // csak signup
@@ -60,4 +61,5 @@ allInputs.forEach(input => {
             errorMessage.innerText = "";
         }
     });
+})
 });
