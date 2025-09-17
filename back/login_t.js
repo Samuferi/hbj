@@ -34,6 +34,7 @@ router.get('/index', (req, res) => {
 
 // 🔹 REGISZTRÁCIÓ
 router.post('/api/register', async (req, res) => {
+  console.log("Kapott adatok:", req.body);
   try {
     const { lastname, firstname, email, "post-number": irsz, town: telepules, address: cim, "phone-number": telefon, password } = req.body;
 
