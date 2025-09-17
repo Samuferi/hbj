@@ -51,7 +51,7 @@ router.post('/api/register', async (req, res) => {
 
     await db.query(
       'INSERT INTO users (vezeteknev, keresztnev, email, irsz, telepules, cim, telefon, jelszo_hash, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [lastname, firstname, email, irsz, telepules, cim, telefon, hashed, 'user']
+      [lastname, firstname, email, irsz, telepules, cim, telefon, hashed, 'lakos']
     );
 
     res.json({ message: 'Sikeres regisztráció' });
