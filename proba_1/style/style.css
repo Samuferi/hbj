@@ -22,6 +22,37 @@ body{
     display:grid;
     grid-template-columns: auto 1fr;
 }
+.container{
+    display:block;
+    max-width: 1200px;
+    width: 90%;
+    margin: 10px;
+    border: 1px solid var(--line-clr);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    padding: 8px;
+}
+.container h2{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.container button{
+    margin-top: 12px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--accent-clr);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.container button:hover{
+    background-color: #13a978;
+}
 #sidebar{
     box-sizing: border-box;
     height: 100vh;
@@ -138,11 +169,11 @@ main p{
     margin-bottom: 15px;
 }
 .card{
-    background:rgba(255,255,255,.02); 
+    background:rgba(255, 255, 255, 0.696); 
     border-radius:12px; 
     padding:14px; 
     min-height:92px; 
-    border:1px solid rgba(255,255,255,.03)
+    border:1px solid rgb(255, 255, 255)
 }
 .grid{
     display:grid; 
@@ -160,7 +191,98 @@ main p{
     align-items:center; 
     gap:16px
 }
+#problemForm{
+    display:flex; 
+    flex-direction:column; 
+    gap:8px; 
+    margin-top:18px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    border-radius:12px;
+    border:2px solid rgba(0, 0, 0, 0.712);
+    padding: 8px;
+}
 
+#problemForm label{
+    font-weight: 600;
+    margin-top: 8px;
+    font-style: oblique;
+}
+
+#problemForm input, #problemForm select, #problemForm textarea{
+    padding: 8px;
+    border: 1px solid var(--line-clr);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+}
+#problemForm input[readonly]{
+    background-color: #f0f0f0;
+}
+#problemForm button{
+    margin-top: 12px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--accent-clr);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+#problemForm button:hover{
+    background-color: #13a978;
+}
+
+h2{
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    font-style: oblique;
+    font-weight: bold;
+    
+}
+
+#profileDataForm{
+    margin-top: 12px;
+    width: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    border-radius:12px;
+    border:2px solid rgba(0, 0, 0, 0.712);
+    padding: 16px;
+}
+#profileDataForm label{
+    font-weight: 600;
+    margin-top: 1px;
+    font-style: oblique;
+    
+}
+#profileDataForm input, #problemForm select, #problemForm textarea{
+    padding: 8px;
+    border: 1px solid var(--line-clr);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+#profileDataForm button{
+    margin-top: 1px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--accent-clr);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+#profileDataForm button:hover{
+    background-color: #13a978;
+}
 
 
 @media (max-width: 800px){
