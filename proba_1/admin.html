@@ -82,7 +82,26 @@
 
             </form>
         </div>
-        
+    <script>
+        document.getElementById("profileDataForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // ne töltsön újra
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch("/api/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(response => {
+                console.log("Siker:", response);
+                alert("Munkatárs hozzáadva!");
+            })
+            .catch(error => console.error("Hiba:", error));
+        });
+    </script>
     </main>
 </body>
 </html>

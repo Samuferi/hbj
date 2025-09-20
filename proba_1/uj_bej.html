@@ -96,5 +96,23 @@
             </form>
         
     </main>
+    <script>
+        document.getElementById("problemForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch("/api/problems", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.json())
+            .then(response => {
+                alert("Probléma sikeresen bejelentve!");
+                console.log(response);
+            })
+            .catch(error => console.error("Hiba:", error));
+        });
+    </script>
 </body>
 </html>

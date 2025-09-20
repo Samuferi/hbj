@@ -82,8 +82,26 @@
             </form>
         </div>
         
-        </div>
-        
     </main>
+    <script>
+        document.getElementById("profileDataForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // ne frissítse az oldalt
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch("/api/updateUser", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(response => {
+                alert("Sikeres mentés!");
+                console.log(response);
+            })
+            .catch(error => console.error("Hiba:", error));
+        });
+    </script>
 </body>
 </html>
