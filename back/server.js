@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 import loginRoutes from "./login_t.js";  // ide húzzuk be a login route-okat
+import indexRoutes from "./index_b.js";
 import problemRoutes from "./ujprob_b.js";
 
 
@@ -26,6 +27,9 @@ app.use("/", loginRoutes);
 
 // probléma bejelentő route-ok
 app.use("/", problemRoutes);
+
+// index route-ok
+app.use("/", indexRoutes);
 
 // szerver indítása
 app.listen(3000, () => {
