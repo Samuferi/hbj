@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem('user', JSON.stringify(data.user));
 
       // 🔹 Átirányítás az index.html-re
-      window.location.href = '/index';
+      window.location.href = '/index.html';
     } catch (err) {
       console.error(err);
       errorMessage.innerText = 'Szerver hiba';
