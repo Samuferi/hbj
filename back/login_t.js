@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { JWT_SECRET } from './config.js';
 
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +18,7 @@ const db = await mysql.createPool({
   database: 'hibabejelento'
 });
 
-const JWT_SECRET = 'nagyonTitkosKulcs';
+
 
 // 🔹 HTML oldalak kiszolgálása
 router.get('/login', (req, res) => {
