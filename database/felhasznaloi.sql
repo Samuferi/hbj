@@ -10,7 +10,7 @@ CREATE TABLE users (
     cim VARCHAR(100),
     telefon VARCHAR(20),
     jelszo_hash VARCHAR(255) NOT NULL,
-    role ENUM('lakos', 'ugyintezo', 'admin') DEFAULT 'lakos'
+    role ENUM('lakos', 'ugyintezo', 'admin', 'fonok') DEFAULT 'lakos'
 );
 
 2 Bejelentések
