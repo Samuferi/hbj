@@ -29,7 +29,7 @@ app.use("/", loginRoutes);
 app.use("/", problemRoutes);
 
 // index route-ok
-app.use("/", indexRoutes);
+app.use("/index", indexRoutes);
 
 // szerver indítása
 app.listen(3000, () => {

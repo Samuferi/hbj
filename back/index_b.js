@@ -10,6 +10,10 @@ const router = express.Router();
 function authenticateToken(req, res, next) {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
+
+    //console.log("Kapott Authorization header:", authHeader);
+    //console.log("Kivágott token:", token); 
+
     if (!token) return res.sendStatus(401);
 
     jwt.verify(token, JWT_SECRET, (err, user) => {

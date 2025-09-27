@@ -11,6 +11,7 @@ function parseJwt(token) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
+    //console.log("LocalStorage token:", token);
     if (!token) {
         // ha nincs token → login oldal
         window.location.href = "/login";
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const payload = parseJwt(token);
+    //console.log("Dekódolt payload:", payload); 
     if (!payload) {
         localStorage.removeItem("token");
         window.location.href = "/login";
