@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiók kezelése</title>
+    <title>Admin oldal</title>
     <link rel="stylesheet" href="style/style.css">
     <script type="text/javascript" src="style/app.js" defer></script>
 </head>
@@ -65,7 +65,29 @@
     </nav>
     <main>
         <div class="container">
-        <h2>Munkatársak</h2>
+            <div class="greet">Munkatársak</div>
+            <table id="employeesTable">
+                <tr>
+                    <th>Felhasználónév</th>
+                    <th>Email-cím</th>
+                    <th>Státusz</th>
+                </tr>
+                <tr>
+                    <td>Név</td>
+                    <td>email@cím.hu</td>
+                    <td>admin</td>
+                </tr>
+                <tr>
+                    <td>Név</td>
+                    <td>email@cím.hu</td>
+                    <td>munkatárs</td>
+                </tr>
+                <tr>
+                    <td>Név</td>
+                    <td>email@cím.hu</td>
+                    <td>munkatárs</td>
+                </tr>
+            </table>
         <div id="employees"></div>
         </div>
 
@@ -74,11 +96,11 @@
         <div id="reports"></div>
         </div>
         <div>
-            <form id="profileDataForm"><h2>Új munkatárs felvétele </h2><br>
-                <input type="text" placeholder="Felhasználónév" required> <br>
-                <input type="email" placeholder="Email cím" required><br>
-                <input type="password" placeholder="Jelszó" required><br>
-                <input type="text" placeholder="Státusz" required><br>
+            <form class="problemForm"><div class="greet">Új munkatárs felvétele </div>
+                <input type="text" placeholder="Felhasználónév" required> 
+                <input type="email" placeholder="Email cím" required>
+                <input type="password" placeholder="Jelszó" required>
+                <input type="text" placeholder="Státusz" required>
                 <button type="submit">Felvétel</button>
 
             </form>
