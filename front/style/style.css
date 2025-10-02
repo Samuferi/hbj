@@ -25,7 +25,7 @@ body{
 .container{
     display:block;
     max-width: 1200px;
-    width: 90%;
+    width: 100%;
     margin: 10px;
     border: 1px solid var(--line-clr);
     border-radius: 12px;
@@ -181,17 +181,18 @@ main p{
     gap:14px; 
     margin-top:18px
 }
-.greet{font-size:30px; font-weight:600; line-height:2.0; margin:0}
-.greet-sub{color:var(--muted); font-size:13px}
+.greet{font-size:40px; font-weight:1000; line-height:2.0; margin:0; text-align: center; }
+.greet-sub{color:var(--muted); font: size 20px; font-weight: 600; margin-bottom: 12px;}
 .card h3{margin:0 0 6px; font-size:15px}
 .card p{margin:0; font-size:13px; color:var(--muted)}
 .hero{
+    width: 100%;
     display:flex; 
     justify-content:space-between; 
     align-items:center; 
-    gap:16px
+    gap:16px;
 }
-#problemForm{
+.problemForm{
     display:flex; 
     flex-direction:column; 
     gap:8px; 
@@ -201,26 +202,28 @@ main p{
     border-radius:12px;
     border:2px solid rgba(0, 0, 0, 0.712);
     padding: 8px;
+    align-self: center;
 }
 
-#problemForm label{
-    font-weight: 600;
+.problemForm label{
+    font-weight: 800;
     margin-top: 8px;
     font-style: oblique;
 }
 
-#problemForm input, #problemForm select, #problemForm textarea{
+.problemForm input, select, textarea{
     padding: 8px;
     border: 1px solid var(--line-clr);
     border-radius: 8px;
     font-size: 14px;
     font-family: inherit;
     resize: vertical;
+    
 }
-#problemForm input[readonly]{
+.problemForm input[readonly]{
     background-color: #f0f0f0;
 }
-#problemForm button{
+.problemForm button{
     margin-top: 12px;
     padding: 10px;
     border: none;
@@ -228,9 +231,10 @@ main p{
     background-color: var(--accent-clr);
     color: white;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
 }
-#problemForm button:hover{
+.problemForm button:hover{
     background-color: #13a978;
 }
 
@@ -284,7 +288,20 @@ h2{
     background-color: #13a978;
 }
 
-
+#employeesTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 12px;
+    background-color: #558179;
+    color: white;
+    overflow: hidden;
+    
+}
+#employeesTable th, #employeesTable td {
+    border: 1px solid var(--line-clr);
+    padding: 8px;
+    text-align: left;
+}
 @media (max-width: 800px){
     body{
         grid-template-columns: 1fr;
