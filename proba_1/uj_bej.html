@@ -6,6 +6,9 @@
     <title>Új bejelentés</title>
     <link rel="stylesheet" href="style/style.css">
     <script type="text/javascript" src="style/app.js" defer></script>
+    <script type="text/javascript" src="style/uj_bej_valid.js" defer></script>
+    <script type="text/javascript" src="style/uj_bej.js" defer></script>
+
 </head>
 <body>
     <nav id="sidebar">
@@ -65,7 +68,7 @@
     </nav>
     <main>
         <div class="greet">Új probléma felvétele</div>
-            <form class="problemForm">
+            <form class="problemForm" id="problemForm">
             <!-- Bejelentő -->
             <label for="user">Bejelentő:</label>
             <input type="text" id="user" name="user" value="Teszt Elek (ID: 12345)" readonly><br>
@@ -96,23 +99,6 @@
             </form>
         
     </main>
-    <script>
-        document.getElementById("problemForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-
-            fetch("/api/problems", {
-                method: "POST",
-                body: formData
-            })
-            .then(res => res.json())
-            .then(response => {
-                alert("Probléma sikeresen bejelentve!");
-                console.log(response);
-            })
-            .catch(error => console.error("Hiba:", error));
-        });
-    </script>
+    
 </body>
 </html>

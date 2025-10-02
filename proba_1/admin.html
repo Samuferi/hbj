@@ -6,6 +6,8 @@
     <title>Admin oldal</title>
     <link rel="stylesheet" href="style/style.css">
     <script type="text/javascript" src="style/app.js" defer></script>
+    <script type="text/javascript" src="style/uj_munkatars_valid.js" defer></script>
+    <script type="text/javascript" src="style/uj_munkatars.js" defer></script>
 </head>
 <body>
     <nav id="sidebar">
@@ -96,16 +98,16 @@
         <div id="reports"></div>
         </div>
         <div>
-            <form class="problemForm"><div class="greet">Új munkatárs felvétele </div>
-                <input type="text" placeholder="Felhasználónév" required> 
-                <input type="email" placeholder="Email cím" required>
-                <input type="password" placeholder="Jelszó" required>
-                <input type="text" placeholder="Státusz" required>
+            <form class="problemForm" id="problemForm"><div class="greet">Új munkatárs felvétele </div>
+                <input type="text" placeholder="Felhasználónév" id="username" required> 
+                <input type="email" placeholder="Email cím" id="email" required>
+                <input type="password" placeholder="Jelszó" id="password" required>
+                <input type="text" placeholder="Státusz" id="status" required>
                 <button type="submit">Felvétel</button>
 
             </form>
         </div>
-
+        <!--
         <script>
         async function loadEmployees() {
         try {
@@ -147,26 +149,7 @@
         loadEmployees();
         loadReports();
         </script>
-    <script>
-        document.getElementById("profileDataForm").addEventListener("submit", function(e) {
-            e.preventDefault(); // ne töltsön újra
-
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-
-            fetch("/api/users", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            })
-            .then(res => res.json())
-            .then(response => {
-                console.log("Siker:", response);
-                alert("Munkatárs hozzáadva!");
-            })
-            .catch(error => console.error("Hiba:", error));
-        });
-    </script>
+        -->
     </main>
 </body>
 </html>

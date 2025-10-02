@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("signupForm").addEventListener("submit", async (e) => {
+  document.getElementById("form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const formData = {
