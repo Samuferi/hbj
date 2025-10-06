@@ -375,3 +375,38 @@ h2{
         }
     }
 }
+
+form > div{
+    width: 80%;
+    display: flex;
+    justify-content: left;
+}
+.problemForm div.incorrect label{
+    color: #f06272;
+}
+.problemForm div.incorrect input{
+    border-color: #f06272;
+    background-color: #f06272;
+    color: white;
+    ::placeholder {
+        color: white;
+        opacity: 1;
+    }
+}
+.problemForm div.incorrect input::placeholder,textarea::placeholder,select::placeholder {
+        color: white;
+        opacity: 1;
+    }
+.problemForm div.incorrect textarea{
+    border-color: #f06272;
+    background-color: #f06272;
+    color: white;
+}
+.problemForm div.incorrect select{
+    border-color: #f06272;
+    background-color: #f06272;
+    color: white;
+}
+#error-message{
+    color: #d32f2f;
+}
