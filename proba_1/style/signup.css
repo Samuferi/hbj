@@ -17,7 +17,7 @@ html{
 }
 body{
     min-height: 100vh;
-    background-image: url(balintka.jpg);
+    background-image: url(login_bg.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
